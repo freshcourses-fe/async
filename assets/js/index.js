@@ -1,25 +1,36 @@
 'use strict';
 
-console.log('start');
+/*
+Можно решить через 
+Создать функции которые последовательно выводят в консоль числа от 1 до 20 с интервалом в 100 мс.
+- setInterval - if, clearInterval
+- setTimeout - рекурсия с if
+*/
+function intervalCounter() {
+  console.time('interval timer');
+  let i = 1;
 
-// setTimeout - одноразовый тамер
-const timeout1Id = setTimeout(() => {
-  console.log('timeout');
-}, 300);
-setTimeout(() => {
-  console.log('timeout 2');
-}, 300);
-// for (let i = 0; i < 500000000; i++) {}
-setTimeout(() => {
-  console.log('timeout 1');
-}, 300);
-// setInterval - многоразовый таймер
-const interval1Id = setInterval((x) => {
-  console.log('interval');
-  console.log(x);
-}, 2000, 'test');
+  const id = setInterval(() => {
+    console.log(i++);
+    if (i > 20) {
+      clearInterval(id);
+      console.timeEnd('interval timer');
+    }
+  }, 100);
+}
 
+intervalCounter();
 
-// clearInterval(4);
+function timeoutConter(i = 0) {
+  console.log(i++);
+  if (i <= 20) {
+    setTimeout(() => {
+      timeoutConter(i);
+    }, 100);
+  } else {
+    console.timeEnd('timeout timer');
+  }
+}
 
-console.log('end');
+console.time('timeout timer');
+timeoutConter();

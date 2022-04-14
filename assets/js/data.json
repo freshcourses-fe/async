@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Ivanko",
+    "lastName": "Sirko",
+    "age": 20,
+    "email": "ivsri@gmail.com"
+  },
+  {
+    "name": "Anna",
+    "lastName": "Shevchenko"
+  },
+  "test"
+]

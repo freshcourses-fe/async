@@ -1,36 +1,22 @@
 'use strict';
 
-/*
-Можно решить через 
-Создать функции которые последовательно выводят в консоль числа от 1 до 20 с интервалом в 100 мс.
-- setInterval - if, clearInterval
-- setTimeout - рекурсия с if
-*/
-function intervalCounter() {
-  console.time('interval timer');
-  let i = 1;
+const user = {
+  name: 'Ivanko',
+  lastName: 'Sirko',
+  age: 20,
+  email: 'ivsri@gmail.com',
+  func: () => {},
+  address: {
+    city: 'ZP',
+  },
+};
 
-  const id = setInterval(() => {
-    console.log(i++);
-    if (i > 20) {
-      clearInterval(id);
-      console.timeEnd('interval timer');
-    }
-  }, 100);
-}
+const serializedUser = JSON.stringify(user); // сериализация данных
 
-intervalCounter();
+console.log(serializedUser);
 
-function timeoutConter(i = 0) {
-  console.log(i++);
-  if (i <= 20) {
-    setTimeout(() => {
-      timeoutConter(i);
-    }, 100);
-  } else {
-    console.timeEnd('timeout timer');
-  }
-}
+const deserializedUser = JSON.parse(`${serializedUser}`); // десериализация данных
+const user2 = user;
+user2.address.city = 'Kyiv';
 
-console.time('timeout timer');
-timeoutConter();
+console.log(deserializedUser);

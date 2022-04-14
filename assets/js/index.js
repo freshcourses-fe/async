@@ -1,22 +1,14 @@
 'use strict';
 
-const user = {
-  name: 'Ivanko',
-  lastName: 'Sirko',
-  age: 20,
-  email: 'ivsri@gmail.com',
-  func: () => {},
-  address: {
-    city: 'ZP',
-  },
-};
+const response = fetch('./assets/js/data.json');
 
-const serializedUser = JSON.stringify(user); // сериализация данных
+// console.log(response);
+const jsonResponse = response.then((response) => response.json());
 
-console.log(serializedUser);
-
-const deserializedUser = JSON.parse(`${serializedUser}`); // десериализация данных
-const user2 = user;
-user2.address.city = 'Kyiv';
-
-console.log(deserializedUser);
+jsonResponse.then((data) => {
+  console.log(data);
+  
+});
+// jsonResponse.then((data) => {
+//   console.log(data);
+// });

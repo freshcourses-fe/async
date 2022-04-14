@@ -1,14 +1,9 @@
 'use strict';
 
-const response = fetch('./assets/js/data.json');
+const response = fetch('./assets/js/data.json')
+  .then((response) => response.json())
+  .then((data) => {
+    state.users = data;
+  });
 
-// console.log(response);
-const jsonResponse = response.then((response) => response.json());
-
-jsonResponse.then((data) => {
-  console.log(data);
-  
-});
-// jsonResponse.then((data) => {
-//   console.log(data);
-// });
+const state = {};

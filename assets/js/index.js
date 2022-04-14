@@ -1,15 +1,12 @@
 'use strict';
 
-fetch('./assets/js/data.json')
-  .then((response) => response.json())
-  .then((data) => {
-    state.users = data;
-  })
-  .catch((err) => {
-    console.log('error happened');
-  })
-  .finally(() => {
-    console.log('finally');
-  });
+console.log(1);
+const myPromise = new Promise((resolve, reject) => {
+  console.log(2);
+  resolve(4);
+});
+console.log(3);
 
-const state = {};
+myPromise.then((number) => console.log(number));
+
+console.log(58);

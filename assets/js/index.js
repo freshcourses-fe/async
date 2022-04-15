@@ -1,12 +1,33 @@
 'use strict';
 
-console.log(1);
-const myPromise = Promise.resolve(4);
-const myErrorPromise = Promise.reject(5);
-console.log(3);
+// function getData(url) {
+//   return fetch(url)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       return data;
+//     });
+// }
 
-myPromise.then((number) => console.log(number));
+async function getData(url) {
+  try {
+    const response = await fetch(url);
 
-myErrorPromise.catch((err) => console.error(err));
+    const data = await response.json();
 
-console.log(58);
+    return data;
+  } catch (error) {
+    console.log('error happend');
+  }
+}
+
+async function handleGetData(url) {
+  const data = await getData(url);
+
+  renderData(data);
+}
+
+function renderData(data) {
+  document.body.append(data);
+}
+
+const state = {};
